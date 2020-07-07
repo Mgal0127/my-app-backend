@@ -20,17 +20,17 @@ app.use(function (req, res, next) {
     next();
   });
 
-app.get('/api/getCountries/:name', (req, res) => {
-    const country_name = req.params.name;
-    const countryInfo = null;
+// app.get('/api/getCountries/:name', (req, res) => {
+//     const country_name = req.params.name;
+//     const countryInfo = null;
 
-    fetch(`https://restcountries.eu/rest/v2/name/${country_name}?fullText=true`)
-    .then(response => response.json())
-    .then(data => {
-      res.status(200).send(data);
-    })
-    .catch(err => '')
-});
+//     fetch(`https://restcountries.eu/rest/v2/name/${country_name}?fullText=true`)
+//     .then(response => response.json())
+//     .then(data => {
+//       res.status(200).send(data);
+//     })
+//     .catch(err => res.status(400).send(err))
+// });
 
 //Question 1 and 2
 app.get('/api/getCountries/:name/:full_text_flag', (req, res) => {
@@ -44,7 +44,7 @@ app.get('/api/getCountries/:name/:full_text_flag', (req, res) => {
     .then(data => {
         res.status(200).send(data);
     })
-    .catch(err => '')
+    .catch(err => res.status(400).send(err))
 });
 
 //Question 3
@@ -55,7 +55,7 @@ app.get('/api/getAllCountries/', (req, res) => {
   .then(data => {
       res.status(200).send(data);
   })
-  .catch(err => '')
+  .catch(err => res.status(400).send(err))
 
 });
 
